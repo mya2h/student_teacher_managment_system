@@ -18,6 +18,7 @@ import { GradeListComponent } from './Component/Student/grade-list/grade-list.co
 import { DeleteStudentComponent } from './Component/Teacher/delete-student/delete-student.component';
 import { UpdateStudentComponent } from './Component/Teacher/update-student/update-student.component';
 import { DeleteGradeComponent } from './Component/Student/delete-grade/delete-grade.component';
+import { CreateStudentComponent } from './Component/Teacher/create-student/create-student.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DeleteGradeComponent } from './Component/Student/delete-grade/delete-gr
     GradeListComponent,
     DeleteStudentComponent,
     UpdateStudentComponent,
-    DeleteGradeComponent
+    DeleteGradeComponent,
+    CreateStudentComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ import { DeleteGradeComponent } from './Component/Student/delete-grade/delete-gr
   entryComponents: [
     DeleteStudentComponent,
     UpdateStudentComponent,
-    DeleteGradeComponent
+    DeleteGradeComponent,
+    CreateStudentComponent
   ],
   bootstrap: [AppComponent]
 })

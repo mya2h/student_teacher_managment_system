@@ -3,7 +3,8 @@ import { TeacherService } from '../../../Service/teacher.service';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { students } from '../../../Model/studList';
 import {DeleteStudentComponent} from '../delete-student/delete-student.component';
-import {UpdateStudentComponent} from '../update-student/update-student.component'
+import {UpdateStudentComponent} from '../update-student/update-student.component';
+import {CreateStudentComponent} from '../create-student/create-student.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
 
 export interface DialogData {
@@ -39,6 +40,14 @@ export class StundentListComponent implements OnInit {
       console.log(res);
       this.dataSource.data = res as students[];
       console.log(this.dataSource.data);
+    })
+  }
+  public addStudent(){
+    this.dialog.open(CreateStudentComponent,{
+      width:'500px',
+    }).afterClosed()
+    .subscribe(result=>{
+      this.getStudentInfo()
     })
   }
   public redirectToDelete(id) {
