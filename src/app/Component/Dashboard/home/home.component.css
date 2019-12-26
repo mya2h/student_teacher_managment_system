@@ -1,0 +1,185 @@
+.tp-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+}
+.tp-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding-left: 40px;
+  height: 60px;
+  width: 300px;
+}
+
+.tp-section .word {
+  margin-left: 20px;
+  width: 40px;
+  height: 20px;
+  color: #163651;
+  font-family: "Source Sans Pro";
+  font-size: 14px;
+  font-weight: 400;
+  /* Text style for "Home" */
+  font-family: "Segoe UI";
+  font-weight: 400;
+}
+
+mat-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.tp-section .image {
+  padding-top: 70px;
+}
+
+.tp-container a:link {
+  text-decoration: none;
+
+}
+
+.navmenu {
+  padding-top: 60px;
+}
+
+mat-sidenav-container {
+  background: #ffffff !important;
+}
+
+mat-sidenav {
+
+  background: #ffffff !important;
+}
+
+.col {
+  background: blue;
+}
+mat-icon {
+  color: #163651;
+}
+
+.iny {
+  color: black;
+
+}
+
+.padright {
+  padding-left: 320px;
+  padding-top: 12px;
+}
+
+.active {
+  background-color: blue;
+}
+
+.new {
+  background-color: #f4f4f5;
+
+}
+
+.requestico {
+  margin-right: 15px;
+  background-color: #f4f4f5;
+}
+
+.between {
+  padding-left: 27px;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.request {
+  padding-right: 19px;
+  background-color: #f4f4f5;
+
+}
+
+.notificationmen {
+  width: 250px;
+}
+
+.is-active {
+  color: #3F51B5 !important;
+  /* Note: You could also use a custom theme */
+}
+
+.navmenu .is-active {
+  background-color: rgb(156, 69, 69);
+}
+
+a.is-active {
+  background: blue !important;
+}
+
+.tp-section:hover {
+  background-color: #163651;
+  color: #f4f4f5 !important;
+}
+
+.tp-section mat-icon:hover {
+  color: #f4f4f5;
+}
+
+.tp .word {
+  color: #f4f4f5 !important;
+}
+
+/* .spacer {
+    flex: 1 1 auto;
+  } */
+.badge {
+  position: absolute;
+  top: 0;
+  margin-top: 12px;
+  margin-left: 156px;
+  left: 50%;
+  font-size: 12px;
+  line-height: 13px;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  background-color: #ff0000;
+  border: 4px solid #ff0000;
+  color: #ffffff;
+  text-align: center;
+}
+
+.req {
+  position: absolute;
+  top: 0;
+  margin-top: 12px;
+  margin-left: 120px;
+  left: 50%;
+  font-size: 12px;
+  line-height: 13px;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  background-color: #265e77;
+  border: 4px solid #265e77;
+  color: #ffffff;
+  text-align: center;
+}
+
+.badgen {
+  position: absolute;
+  top: 0;
+  margin-top: 12px;
+  margin-left: 120px;
+  left: 50%;
+  font-size: 12px;
+  line-height: 13px;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  background-color: #ff0000;
+  border: 4px solid #ff0000;
+  color: #ffffff;
+  text-align: center;
+}
