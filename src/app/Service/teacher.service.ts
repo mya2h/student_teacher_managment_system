@@ -22,5 +22,8 @@ export class TeacherService {
   updateStudent(user:students,id:string):Observable<any>{
     return this.http.put(`${this.apiurl}/${id}`,user,this.httpOptions)
   }
+  createStudent(user:students):Observable<any>{
+    return this.http.post(`${this.apiurl}`,user,this.httpOptions)
+  }
 
 }

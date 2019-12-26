@@ -15,6 +15,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './Service/in-memory-data.service';
 import { StundentListComponent } from './Component/Teacher/stundent-list/stundent-list.component';
 import { GradeListComponent } from './Component/Student/grade-list/grade-list.component';
+import { DeleteStudentComponent } from './Component/Teacher/delete-student/delete-student.component';
+import { UpdateStudentComponent } from './Component/Teacher/update-student/update-student.component';
+import { DeleteGradeComponent } from './Component/Student/delete-grade/delete-grade.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { GradeListComponent } from './Component/Student/grade-list/grade-list.co
     RegisterComponent,
     LandingPageComponent,
     StundentListComponent,
-    GradeListComponent
+    GradeListComponent,
+    DeleteStudentComponent,
+    UpdateStudentComponent,
+    DeleteGradeComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +67,11 @@ import { GradeListComponent } from './Component/Student/grade-list/grade-list.co
     ), 
   ],
   providers: [],
+  entryComponents: [
+    DeleteStudentComponent,
+    UpdateStudentComponent,
+    DeleteGradeComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

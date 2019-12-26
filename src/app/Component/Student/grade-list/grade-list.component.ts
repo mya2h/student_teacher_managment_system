@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TeacherService } from '../../../Service/teacher.service';
+import {StudentService} from '../../../Service/student.service'
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
-import { students } from '../../../Model/studList';
+import { studentGrade } from '../../../Model/gradeList'
+import {DeleteGradeComponent} from '../delete-grade/delete-grade.component'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
 export interface DialogData {
   animal: string;
@@ -13,49 +14,42 @@ export interface DialogData {
   styleUrls: ['./grade-list.component.css']
 })
 export class GradeListComponent implements OnInit {
-  public displayedColumns = ['id', 'name', 'email',
-    'contact', 'grade', 'update', 'delete'];
-  public dataSource = new MatTableDataSource<students>();
+  public displayedColumns = ['id', 'subject', 'creditHour',
+    'instructor', 'grade','delete'];
+  public dataSource = new MatTableDataSource<studentGrade>();
 
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  constructor(private stud: TeacherService, private dialog: MatDialog) { }
+  constructor(private stud: StudentService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.getStudentInfo();
+    this.getCoursesInfo();
   }
-  getStudentInfo() {
-    this.stud.getStudents().subscribe(res => {
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+  getCoursesInfo() {
+    this.stud.getGradeInfo().subscribe(res => {
       console.log(res);
-      this.dataSource.data = res as students[];
+      this.dataSource.data = res as studentGrade[];
       console.log(this.dataSource.data);
     })
   }
   public redirectToDelete(id) {
     console.log(id);
-    // this.dialog.open(DeleteComponent,{
-    //   width:'500px',
-    //   data:{
-    //     id:id
-    //   }
-    // }).afterClosed()
-    // .subscribe(result=>{
-    //   this.getStudentInfo()
-    // })
-
-  }
-  public redirectToUpdate(id) {
-    console.log(id);
-    // console.log(id);
-    // this.dialog.open(UpdateComponent,{
-    //   width:'500px',
-    //   data:{
-    //     id:id
-    //   }
-    // }).afterClosed()
-    // .subscribe(result=>{
-    //   this.getStudentInfo()
-    // })
+    this.dialog.open(DeleteGradeComponent,{
+      width:'500px',
+      data:{
+        id:id
+      }
+    }).afterClosed()
+    .subscribe(result=>{
+      this.getCoursesInfo()
+    })
   }
 }
 

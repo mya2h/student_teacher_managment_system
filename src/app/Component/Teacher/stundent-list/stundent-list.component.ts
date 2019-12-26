@@ -2,7 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TeacherService } from '../../../Service/teacher.service';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { students } from '../../../Model/studList';
+import {DeleteStudentComponent} from '../delete-student/delete-student.component';
+import {UpdateStudentComponent} from '../update-student/update-student.component'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
+
 export interface DialogData {
   animal: string;
   name: string;
@@ -24,6 +27,13 @@ export class StundentListComponent implements OnInit {
   ngOnInit() {
     this.getStudentInfo();
   }
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
   getStudentInfo() {
     this.stud.getStudents().subscribe(res => {
       console.log(res);
@@ -33,28 +43,31 @@ export class StundentListComponent implements OnInit {
   }
   public redirectToDelete(id) {
     console.log(id);
-    // this.dialog.open(DeleteComponent,{
-    //   width:'500px',
-    //   data:{
-    //     id:id
-    //   }
-    // }).afterClosed()
-    // .subscribe(result=>{
-    //   this.getStudentInfo()
-    // })
+    this.stud.deleteStudent(id).subscribe(data=>{
+      console.log(data);
+    })
+    this.dialog.open(DeleteStudentComponent,{
+      width:'500px',
+      data:{
+        id:id
+      }
+    }).afterClosed()
+    .subscribe(result=>{
+      this.getStudentInfo()
+    })
 
   }
   public redirectToUpdate(id) {
     console.log(id);
-    // console.log(id);
-    // this.dialog.open(UpdateComponent,{
-    //   width:'500px',
-    //   data:{
-    //     id:id
-    //   }
-    // }).afterClosed()
-    // .subscribe(result=>{
-    //   this.getStudentInfo()
-    // })
+    console.log(id);
+    this.dialog.open(UpdateStudentComponent,{
+      width:'500px',
+      data:{
+        id:id
+      }
+    }).afterClosed()
+    .subscribe(result=>{
+      this.getStudentInfo()
+    })
   }
 }
