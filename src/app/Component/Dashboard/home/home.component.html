@@ -10,6 +10,7 @@
         </div>
     </mat-sidenav>
     <mat-sidenav-content>
+     <button class="logout" mat-button (click)="logout()">Logout</button>
         <div *ngIf="!getrole()">
             <app-grade-list></app-grade-list>
         </div>

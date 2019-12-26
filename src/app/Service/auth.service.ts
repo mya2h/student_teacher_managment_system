@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { user } from '../Model/user';
 import { login } from '../Model/authenticate';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   signUP = 'api/user';
   logIN = 'api/login'
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { }
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -30,5 +31,11 @@ export class AuthService {
   loogedIn() {
     return !!localStorage.getItem('token');
   }
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    this.router.navigate(['/'])
+  }
+
 
 }
