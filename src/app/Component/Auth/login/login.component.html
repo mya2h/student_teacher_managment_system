@@ -1,0 +1,51 @@
+<div class="all">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title>
+                <div class="size">
+                    Already a member?
+                </div>
+            </mat-card-title>
+        </mat-card-header>
+        <div id="errorMsg" *ngIf="errorMessage">
+            <span color="warn">{{errorMessage}}</span>
+        </div>
+        <form [formGroup]="ownerForm" autocomplete="off" novalidate (ngSubmit)="authenticateUser(ownerForm.value)">
+            <div class="example-container">
+                <label>
+                    <mat-icon class="ic1">person</mat-icon>
+                </label><span class="g"></span>
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+                </mat-form-field>
+                <br>
+                <label>
+                    <mat-icon class="ic2">https</mat-icon>
+                </label><span class="g"></span>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Password" formControlName="password">
+                    <mat-error *ngIf="hasError('password', 'required')">Passwordis required</mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class="card1">
+                <mat-card-actions>
+                    <mat-checkbox>
+                        <div class="remember">
+                            Remember me
+                        </div>
+                    </mat-checkbox><span class="gapd"></span>
+                    <a routerLink="/forgetPassword">
+                        <mat-label class="forget">Forget password?</mat-label>
+                    </a>
+                </mat-card-actions>
+            </div>
+            <mat-card-actions>
+                <button class="login" mat-button [disabled]="!ownerForm.valid">LOGIN</button>
+                <span class="gap"></span>
+                <a routerLink="/signup"> <button class="signup" mat-button>SIGNUP</button></a>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>

@@ -7,26 +7,14 @@
                     <div class="word"> Home</div>
                 </section>
             </a>
-            <a mat-list-item routerLink="/dashboard/inbox" routerLinkActive="is-active">
-                <section class="tp-section">
-                    <mat-icon> mail_outline</mat-icon>
-                    <div class="word"> Inbox</div>
-                </section>
-            </a>
-            <a mat-list-item routerLink="/dashboard/startups" routerLinkActive="is-active">
-                <section class="tp-section">
-                    <mat-icon>supervisor_account</mat-icon>
-                    <div class="word">Startups</div>
-                </section>
-            </a>
-            <a mat-list-item routerLink="/dashboard/explore" routerLinkActive="is-active">
-                <section class="tp-section">
-                    <mat-icon>explore</mat-icon>
-                    <div class="word">Explore</div>
-                </section>
-            </a>
         </div>
     </mat-sidenav>
     <mat-sidenav-content>
+        <div *ngIf="!getrole()">
+            <app-grade-list></app-grade-list>
+        </div>
+        <div *ngIf="getrole()">
+            <app-stundent-list></app-stundent-list>
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

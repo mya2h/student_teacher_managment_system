@@ -1,0 +1,87 @@
+<div class="all">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title>
+                <div class="size">
+                    Register Here
+                </div>
+            </mat-card-title>
+        </mat-card-header>
+        <div id="errorMsg" *ngIf="errorMessage">
+            <span>{{errorMessage}}</span>
+        </div>
+        <form [formGroup]="registerForm" autocomplete="off" novalidate (ngSubmit)="createOwner(registerForm.value)">
+            <div class="example-container">
+
+                <label>
+                    <mat-icon class="ic1">perm_identity</mat-icon>
+                </label><span class="g"></span>
+                <mat-form-field>
+                    <input matInput placeholder="First Name" formControlName="firstName">
+                    <mat-error *ngIf="hasError('firstName', 'required')">First name is required</mat-error>
+                </mat-form-field>
+                <br>
+                <label>
+                    <mat-icon class="ic1">perm_identity</mat-icon>
+                </label><span class="g"></span>
+                <mat-form-field>
+                    <input matInput placeholder="Last Name" formControlName="lastName">
+                    <mat-error *ngIf="hasError('lastName', 'required')">Last name is required</mat-error>
+                </mat-form-field>
+                <br>
+                <label>
+                    <mat-icon class="ic1">mail</mat-icon>
+                </label><span class="g"></span>
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+                    <span *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched"
+                        class="help-block">
+                        Please
+                        enter a valid email!
+                    </span>
+                </mat-form-field>
+                <br>
+                <label>
+                    <mat-icon class="ic1">call</mat-icon>
+                </label><span class="g"></span>
+                <mat-form-field>
+                    <input matInput placeholder="Phone" formControlName="phone">
+
+                    <mat-error *ngIf="hasError('phone', 'required')">Phone is required</mat-error>
+                </mat-form-field>
+                <br>
+                <label>
+                    <mat-icon class="ic2">lock</mat-icon>
+                </label><span class="g"></span>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Password" formControlName="password">
+                    <mat-hint>please enter minimum of 5 character</mat-hint>
+                    <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+                </mat-form-field>
+                <br>
+                <label>
+                    <mat-icon class="ic2">lock</mat-icon>
+                </label><span class="g"></span>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+                    <mat-error *ngIf="hasError('confirmPassword', 'required')">Confirm password required</mat-error>
+                    <div *ngIf="doesntmuch">Confirmation password doesn't much</div>
+                </mat-form-field>
+                <br>
+                <label>
+                    <mat-icon class="ic2">drag_handle</mat-icon>
+                </label><span class="g"></span>
+                <mat-form-field>
+
+                    <mat-select formControlName="role">
+                        <mat-option value="teacher">teacher</mat-option>
+                        <mat-option value="student">student</mat-option>
+                    </mat-select>
+
+                </mat-form-field>
+                <button class="signup" mat-button id="signup" [disabled]="!registerForm.valid">SIGNUP</button>
+            </div>
+        </form>
+    </mat-card>
+</div>
